@@ -4,3 +4,12 @@ build/*
 # Ignore vim tempfiles
 *~
 
+# Ignore cmake
+Makefile
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Ignore anything placed in a temp directory
+tmp/
+
