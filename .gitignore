@@ -13,3 +13,5 @@ cmake_install.cmake
 # Ignore anything placed in a temp directory
 tmp/
 
+# Ignore buildfiles from QT Creator
+build-tuner-Desktop-Debug/
