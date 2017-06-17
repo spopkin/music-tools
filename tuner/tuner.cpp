@@ -12,3 +12,5 @@ Tuner::~Tuner()
 {
     delete ui;
 }
+
+
