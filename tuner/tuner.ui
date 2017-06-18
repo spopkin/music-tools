@@ -75,25 +75,9 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>Tune Configuration</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="comboBox_2">
-            <item>
-             <property name="text">
-              <string>Normal</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>Tune Values</string>
+             <string>Properties</string>
             </property>
            </widget>
           </item>
@@ -137,10 +121,7 @@
      <string>Edit</string>
     </property>
     <addaction name="actionNew_Instrument"/>
-    <addaction name="actionNew_Tune_Configuration"/>
-    <addaction name="separator"/>
     <addaction name="actionEdit_Instruments"/>
-    <addaction name="actionEdit_Tune_Configurations"/>
    </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
@@ -196,6 +177,9 @@
   <action name="actionQuit">
    <property name="text">
     <string>Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
   <action name="actionAbout">
