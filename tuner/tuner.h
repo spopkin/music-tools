@@ -17,14 +17,17 @@ public:
 
 public slots:
     void on_menu_about_activated();
+    void on_menu_new_instrument();
+    void on_menu_edit_instruments();
 
 private slots:
 
-//    void on_comboBox_3_activated(const QString &arg1);
 
 private:
     Ui::Tuner *ui;
     QAction *actionAbout;
+    QAction *actionEditInstruments;
+    QAction *actionNewInstrument;
 };
 
 #endif // TUNER_H
