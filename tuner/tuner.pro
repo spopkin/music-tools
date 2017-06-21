@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        tuner.cpp
+        tuner.cpp \
+    aboutdialog.cpp
 
-HEADERS  += tuner.h
+HEADERS  += tuner.h \
+    aboutdialog.h
 
 FORMS    += tuner.ui

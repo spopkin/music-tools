@@ -22,15 +22,18 @@ Tuner::~Tuner()
     delete ui;
 }
 
-void Tuner::on_menu_about_activated() {
+void Tuner::on_menu_about_activated()
+{
     std::cout << "about" << std::endl;
 }
 
-void Tuner::on_menu_new_instrument() {
+void Tuner::on_menu_new_instrument()
+{
     std::cout << "new instrument" << std::endl;
 }
 
-void Tuner::on_menu_edit_instruments() {
+void Tuner::on_menu_edit_instruments()
+{
     std::cout << "edit instruments" << std::endl;
 }
 
