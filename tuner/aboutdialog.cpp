@@ -1,11 +1,9 @@
 #include "aboutdialog.h"
 
 
-AboutDialog::AboutDialog(QWidget *parent) //: QDialog(parent), ui(new Ui::AboutDialog)
+AboutDialog::AboutDialog(QWidget *parent) : QDialog(parent)
 {
-    this->parentWidget = parent;
-//    setAttribute(QT::WA_DeleteOnClose);
-//    QWidget::setParent(parent);
+
 
 }
 
