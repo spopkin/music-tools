@@ -23,6 +23,7 @@ public slots:
 private:
     void populateIcons();
     QWidget *parentWidget;
+//    Ui::AboutDialog *ui;
 };
 
 #endif // ABOUTDIALOG_H

@@ -8,6 +8,9 @@ Tuner::Tuner(QWidget *parent) :
 {
     ui->setupUi(this);
 
+//    AboutDialog about;
+    about = new AboutDialog(this);
+
     actionAbout = ui->actionAbout;
     actionEditInstruments = ui->actionEdit_Instruments;
     actionNewInstrument = ui->actionNew_Instrument;
@@ -20,11 +23,13 @@ Tuner::Tuner(QWidget *parent) :
 Tuner::~Tuner()
 {
     delete ui;
+    delete about;
 }
 
 void Tuner::on_menu_about_activated()
 {
     std::cout << "about" << std::endl;
+    about->show();
 }
 
 void Tuner::on_menu_new_instrument()
