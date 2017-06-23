@@ -40,9 +40,19 @@
        </widget>
       </item>
       <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Note</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox_3"/>
+      </item>
+      <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Frequency/Note</string>
+         <string>Frequency</string>
         </property>
        </widget>
       </item>
