@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>NewInstrumentDialog</class>
- <widget class="QDialog" name="NewInstrumentDialog">
+ <class>AddStringDialog</class>
+ <widget class="QDialog" name="AddStringDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,37 +15,54 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QWidget" name="workArea" native="true">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Add a String</string>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Properties</string>
+         <string>String Name</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QTableView" name="tableView"/>
+       <widget class="QWidget" name="widget_3" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLineEdit" name="lineEdit"/>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox"/>
+         </item>
+        </layout>
+       </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Add a String</string>
+         <string>Frequency/Note</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_4">
-        <property name="text">
-         <string>Remove a String</string>
-        </property>
+       <widget class="QWidget" name="widget_4" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_2"/>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_2"/>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
    <item alignment="Qt::AlignBottom">
-    <widget class="QWidget" name="buttonArea" native="true">
+    <widget class="QWidget" name="widget_2" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="pushButton">
