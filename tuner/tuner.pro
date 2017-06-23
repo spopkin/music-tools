@@ -14,12 +14,15 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         tuner.cpp \
-    aboutdialog.cpp
+    aboutdialog.cpp \
+    newinstrumentdialog.cpp
 
 HEADERS  += tuner.h \
-    aboutdialog.h
+    aboutdialog.h \
+    newinstrumentdialog.h
 
 FORMS    += tuner.ui \
-    aboutdialog.ui
+    aboutdialog.ui \
+    newinstrumentdialog.ui
 
 DISTFILES +=
