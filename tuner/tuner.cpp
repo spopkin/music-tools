@@ -8,7 +8,6 @@ Tuner::Tuner(QWidget *parent) :
 {
     ui->setupUi(this);
 
-//    AboutDialog about;
     about = new AboutDialog(this);
 
     actionAbout = ui->actionAbout;
@@ -29,7 +28,7 @@ Tuner::~Tuner()
 void Tuner::on_menu_about_activated()
 {
     std::cout << "about" << std::endl;
-    about->show();
+    about->exec();
 }
 
 void Tuner::on_menu_new_instrument()

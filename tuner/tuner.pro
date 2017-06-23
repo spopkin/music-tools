@@ -19,4 +19,7 @@ SOURCES += main.cpp\
 HEADERS  += tuner.h \
     aboutdialog.h
 
-FORMS    += tuner.ui
+FORMS    += tuner.ui \
+    aboutdialog.ui
+
+DISTFILES +=
