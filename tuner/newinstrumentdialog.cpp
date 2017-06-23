@@ -6,6 +6,7 @@ NewInstrumentDialog::NewInstrumentDialog(QWidget *parent) :
     ui(new Ui::NewInstrumentDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add a New Instrument");
     connect(ui->addStringButton, SIGNAL (released()), this, SLOT (button_press_add_string()));
 }
 

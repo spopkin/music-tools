@@ -6,6 +6,7 @@ AddStringDialog::AddStringDialog(QWidget *parent) :
     ui(new Ui::AddStringDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add a String to an Instrument");
 }
 
 AddStringDialog::~AddStringDialog()

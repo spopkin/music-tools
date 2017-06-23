@@ -16,16 +16,21 @@ SOURCES += main.cpp\
         tuner.cpp \
     aboutdialog.cpp \
     newinstrumentdialog.cpp \
-    addstringdialog.cpp
+    addstringdialog.cpp \
+    instrumentmodel.cpp \
+    editinstrumentsdialog.cpp
 
 HEADERS  += tuner.h \
     aboutdialog.h \
     newinstrumentdialog.h \
-    addstringdialog.h
+    addstringdialog.h \
+    instrumentmodel.h \
+    editinstrumentsdialog.h
 
 FORMS    += tuner.ui \
     aboutdialog.ui \
     newinstrumentdialog.ui \
-    addstringdialog.ui
+    addstringdialog.ui \
+    editinstrumentsdialog.ui
 
 DISTFILES +=
