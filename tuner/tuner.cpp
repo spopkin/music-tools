@@ -2,6 +2,9 @@
 #include "ui_tuner.h"
 #include <iostream>
 
+#include "aboutdialog.h"
+#include "newinstrumentdialog.h"
+
 Tuner::Tuner(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Tuner)

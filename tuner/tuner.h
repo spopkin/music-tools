@@ -2,8 +2,6 @@
 #define TUNER_H
 
 #include <QMainWindow>
-#include "aboutdialog.h"
-#include "newinstrumentdialog.h"
 
 namespace Ui {
 class Tuner;
@@ -30,7 +28,6 @@ private:
     QAction *actionAbout;
     QAction *actionEditInstruments;
     QAction *actionNewInstrument;
-//    AboutDialog *about;
 };
 
 #endif // TUNER_H

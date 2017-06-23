@@ -18,14 +18,18 @@ SOURCES += main.cpp\
     newinstrumentdialog.cpp \
     addstringdialog.cpp \
     instrumentmodel.cpp \
-    editinstrumentsdialog.cpp
+    editinstrumentsdialog.cpp \
+    instrumentlist.cpp \
+    iohandler.cpp
 
 HEADERS  += tuner.h \
     aboutdialog.h \
     newinstrumentdialog.h \
     addstringdialog.h \
     instrumentmodel.h \
-    editinstrumentsdialog.h
+    editinstrumentsdialog.h \
+    instrumentlist.h \
+    iohandler.h
 
 FORMS    += tuner.ui \
     aboutdialog.ui \

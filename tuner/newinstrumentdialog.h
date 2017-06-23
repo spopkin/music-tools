@@ -2,7 +2,6 @@
 #define NEWINSTRUMENTDIALOG_H
 
 #include <QDialog>
-#include "addstringdialog.h"
 
 namespace Ui {
 class NewInstrumentDialog;

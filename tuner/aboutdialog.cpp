@@ -6,6 +6,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui(new Ui::AboutDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("About this Tuner");
 }
 
 AboutDialog::~AboutDialog()
