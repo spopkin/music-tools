@@ -17,6 +17,7 @@ public:
 
 public slots:
     void button_press_add_string();
+    void button_press_ok();
 
 private:
     Ui::NewInstrumentDialog *ui;
