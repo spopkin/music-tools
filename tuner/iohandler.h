@@ -8,7 +8,7 @@ class IOHandler
 public:
     IOHandler();
     ~IOHandler();
-    InstrumentList *readInstrumentsListFromDisk();
+    InstrumentList *readInstrumentsListFromDisk(char *filename);
     int writeInstrumentsListToDisk(InstrumentList *instruments, char *filename);
 
 };
