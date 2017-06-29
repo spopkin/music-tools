@@ -6,6 +6,7 @@ class InstrumentModel
 {
 public:
     InstrumentModel();
+    ~InstrumentModel();
 };
 
 #endif // INSTRUMENTMODEL_H
