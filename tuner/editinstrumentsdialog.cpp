@@ -1,3 +1,5 @@
+//Dialog to edit the list of existing instruments
+
 #include "editinstrumentsdialog.h"
 #include "ui_editinstrumentsdialog.h"
 

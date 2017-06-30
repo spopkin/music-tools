@@ -1,3 +1,5 @@
+//A simple help->about dialog
+
 #include "aboutdialog.h"
 #include "ui_aboutdialog.h"
 

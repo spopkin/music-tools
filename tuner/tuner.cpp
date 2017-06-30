@@ -1,3 +1,7 @@
+//Main Tuner window, ties together a number of components
+//In MVC terms, largely a view module, with a little bit of
+//controller thrown in.
+
 #include "tuner.h"
 #include "ui_tuner.h"
 #include <iostream>
@@ -11,8 +15,6 @@ Tuner::Tuner(QWidget *parent) :
 {
     ui->setupUi(this);
 
-//    about = new AboutDialog(this);
-
     actionAbout = ui->actionAbout;
     actionEditInstruments = ui->actionEdit_Instruments;
     actionNewInstrument = ui->actionNew_Instrument;
@@ -25,9 +27,10 @@ Tuner::Tuner(QWidget *parent) :
 Tuner::~Tuner()
 {
     delete ui;
-//    delete about;
 }
 
+//Handles the main_menu->help->about event
+//Creates an about dialog
 void Tuner::on_menu_about_activated()
 {
     AboutDialog *about = new AboutDialog(this);
@@ -36,6 +39,8 @@ void Tuner::on_menu_about_activated()
     delete about;
 }
 
+//Handles the main_menu->edit->new_instrument event
+//Creates a dialog to add a new instrument
 void Tuner::on_menu_new_instrument()
 {
     NewInstrumentDialog *newInst = new NewInstrumentDialog(this);
@@ -44,6 +49,8 @@ void Tuner::on_menu_new_instrument()
     delete newInst;
 }
 
+//Handles the main_menu->edit->edit_instruments event
+//TODO: creates a dialog to edit existing instruments
 void Tuner::on_menu_edit_instruments()
 {
     std::cout << "edit instruments" << std::endl;

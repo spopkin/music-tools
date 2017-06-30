@@ -1,3 +1,5 @@
+//Dialog to add a string to a given instrument model
+
 #include "addstringdialog.h"
 #include "ui_addstringdialog.h"
 

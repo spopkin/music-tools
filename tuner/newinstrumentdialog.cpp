@@ -1,7 +1,10 @@
+//Dialog that is used to create new instrument models
+
 #include "newinstrumentdialog.h"
 #include "ui_newinstrumentdialog.h"
 
 #include "addstringdialog.h"
+
 
 NewInstrumentDialog::NewInstrumentDialog(QWidget *parent) :
     QDialog(parent),
@@ -18,6 +21,8 @@ NewInstrumentDialog::~NewInstrumentDialog()
     delete ui;
 }
 
+//Handles the "add string" button press
+//Creates a dialog that adds a string to the instrument
 void NewInstrumentDialog::button_press_add_string()
 {
     AddStringDialog *addS = (new AddStringDialog(this));
@@ -25,8 +30,8 @@ void NewInstrumentDialog::button_press_add_string()
     delete addS;
 }
 
+//TODO: handles the acceptance and final creation of the current instrument
 void NewInstrumentDialog::button_press_ok()
 {
-
 
 }

@@ -1,7 +1,7 @@
 #ifndef INSTRUMENTLIST_H
 #define INSTRUMENTLIST_H
 
-#import "instrumentmodel.h"
+#include "instrumentmodel.h"
 
 class InstrumentList
 {

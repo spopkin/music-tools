@@ -1,3 +1,6 @@
+//A simple class to handle IO operations and populate lists of
+//instrument models
+
 #include "iohandler.h"
 #include <fstream>
 #include <iostream>
@@ -12,6 +15,7 @@ IOHandler::~IOHandler()
 
 }
 
+//Reads, decodes, and returns a list from a given file by name
 InstrumentList *IOHandler::readInstrumentsListFromDisk(char *filename)
 {
     std::fstream readFile;
@@ -23,6 +27,7 @@ InstrumentList *IOHandler::readInstrumentsListFromDisk(char *filename)
     return 0;
 }
 
+//Encodes and writes a list to a given file by name
 int IOHandler::writeInstrumentsListToDisk(InstrumentList *instruments, char *filename)
 {
     std::fstream writeFile;
