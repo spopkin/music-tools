@@ -15,6 +15,7 @@ public:
     explicit AddStringDialog(QWidget *parent = 0);
     ~AddStringDialog();
 
+
 private:
     Ui::AddStringDialog *ui;
 };

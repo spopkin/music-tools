@@ -3,6 +3,7 @@
 #include "instrumentmodel.h"
 #include <vector>
 #include <cstdlib>
+#include <cstring>
 
 //Struct to model a single instrument string
 //Can probably also be used with non-string instruments, but this is
@@ -15,7 +16,7 @@ struct instrumentString
 };
 
 //Holds the set of string structs
-std::vector<instrumentString> *stringSet;
+std::vector<instrumentString *> *stringSet;
 
 //The name of the current instrument
 char *instrumentName;
@@ -23,7 +24,7 @@ char *instrumentName;
 
 InstrumentModel::InstrumentModel()
 {
-    stringSet = new std::vector<instrumentString>();
+    stringSet = new std::vector<instrumentString *>();
 }
 
 InstrumentModel::~InstrumentModel()
@@ -41,7 +42,7 @@ InstrumentModel::~InstrumentModel()
 //returns the number of strings in this instrument model
 int InstrumentModel::getNumberOfStrings()
 {
-    return 0;
+    return stringSet->size();
 }
 
 //returns the name of a given string
@@ -80,21 +81,31 @@ int InstrumentModel::deleteStringByNumber(int stringNumber)
 }
 
 //adds a new string
-int addString(char *stringName, int frequency)
+int InstrumentModel::addString(char *stringName, int frequency)
 {
     //first, check if the name is not taken
-    int number = getStringNumber(stringName);
+    //int number = getStringNumber(stringName);
 
     //if so, then fail
-    if (number != -1) {
-        return -1;
-    }
-
+    //if (number != -1) {
+    //    return -1;
+    //}
     //otherwise, create the string and add it to the array
+
+    //create the string
     instrumentString *newString = (instrumentString *) malloc(sizeof(instrumentString));
+
+    //duplicate the string name to the heap so it won't go out of scope
+    int len = strlen(stringName) + 1;
+    char *duplicate = (char *) malloc(len * sizeof(char));
+    strcpy(duplicate, stringName);
+
+    //assign the name and frequency to the new string
     newString->frequency = frequency;
+    newString->stringName = duplicate;
 
-
+    //add the string to the set
+    stringSet->push_back(newString);
 
     return 0;
 }

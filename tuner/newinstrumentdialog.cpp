@@ -5,6 +5,8 @@
 
 #include "addstringdialog.h"
 
+#include "instrumentmodel.h"
+
 
 NewInstrumentDialog::NewInstrumentDialog(QWidget *parent) :
     QDialog(parent),
