@@ -57,7 +57,10 @@ int InstrumentModel::getNumberOfStrings()
 //returns the name of a given string
 char *InstrumentModel::getStringName(int stringNumber)
 {
-    return "";
+    if (stringNumber >= stringSet->size() || stringNumber < 0) {
+        return 0;
+    }
+    return stringSet->at(stringNumber)->stringName;
 }
 
 int InstrumentModel::getStringNumber(char *stringName)
