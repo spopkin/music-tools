@@ -63,15 +63,26 @@ char *InstrumentModel::getStringName(int stringNumber)
     return stringSet->at(stringNumber)->stringName;
 }
 
+//returns the zero-indexed numeric position of a given string
 int InstrumentModel::getStringNumber(char *stringName)
 {
-    return 0;
+    for (int i = 0; i < stringSet->size(); i++) {
+        char *c = stringSet->at(i)->stringName;
+        if (strlen(c) == strlen(stringName) && !strncmp(stringName, c, strlen(c))) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 //returns the correct frequency in Hz of a given string
 int InstrumentModel::getStringFrequency(char *stringName)
 {
-    return 0;
+    int stringNo = getStringNumber(stringName);
+    if (stringNo == -1) {
+        return -1;
+    }
+    return stringSet->at(stringNo)->frequency;
 }
 
 //returns the note of a given string
