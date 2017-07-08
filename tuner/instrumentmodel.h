@@ -10,9 +10,19 @@ public:
 
     char *getInstrumentName();
     int getNumberOfStrings();
+
     char *getStringName(int stringNumber);
-    int getStringFrequency(int stringNumber);
-    char *getStringNote(int stringNumber);
+    int getStringNumber(char *stringName);
+
+    int getStringFrequency(char *stringName);
+    char *getStringNote(char *stringName);
+
+    int deleteStringByName(char *stringName);
+    int deleteStringByNumber(int stringNumber);
+
+    int addString(char *stringName, int frequency);
+
+    int reorderString(char *stringName, int newPosition);
 };
 
 #endif // INSTRUMENTMODEL_H
