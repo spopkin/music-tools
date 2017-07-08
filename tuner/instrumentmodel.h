@@ -14,13 +14,13 @@ public:
     char *getStringName(int stringNumber);
     int getStringNumber(char *stringName);
 
-    int getStringFrequency(char *stringName);
+    float getStringFrequency(char *stringName);
     char *getStringNote(char *stringName);
 
     int deleteStringByName(char *stringName);
     int deleteStringByNumber(int stringNumber);
 
-    int addString(char *stringName, int frequency);
+    int addString(char *stringName, float frequency);
 
     int reorderString(char *stringName, int newPosition);
 };

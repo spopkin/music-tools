@@ -12,7 +12,7 @@ struct instrumentString
 {
     char *stringName;
     //char *note;   //this can probably just be computed on the fly
-    int frequency;
+    float frequency;
 };
 
 //Holds the set of string structs
@@ -76,11 +76,11 @@ int InstrumentModel::getStringNumber(char *stringName)
 }
 
 //returns the correct frequency in Hz of a given string
-int InstrumentModel::getStringFrequency(char *stringName)
+float InstrumentModel::getStringFrequency(char *stringName)
 {
     int stringNo = getStringNumber(stringName);
     if (stringNo == -1) {
-        return -1;
+        return -1.0;
     }
     return stringSet->at(stringNo)->frequency;
 }
@@ -100,11 +100,18 @@ int InstrumentModel::deleteStringByName(char *stringName)
 //deletes the string in the given vector position
 int InstrumentModel::deleteStringByNumber(int stringNumber)
 {
+    if (stringNumber >= stringSet->size() || stringNumber < 0) {
+        return -1;
+    }
+    instrumentString *strn = stringSet->at(stringNumber);
+    free(strn->stringName);
+    free(strn);
+    stringSet->erase(stringSet->begin() + stringNumber);
     return 0;
 }
 
 //adds a new string
-int InstrumentModel::addString(char *stringName, int frequency)
+int InstrumentModel::addString(char *stringName, float frequency)
 {
     //first, check if the name is not taken
     //int number = getStringNumber(stringName);
