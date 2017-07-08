@@ -7,6 +7,8 @@
 
 #include "instrumentmodel.h"
 
+//the instrument model that this dialog creates
+InstrumentModel *inst;
 
 NewInstrumentDialog::NewInstrumentDialog(QWidget *parent) :
     QDialog(parent),
@@ -16,10 +18,13 @@ NewInstrumentDialog::NewInstrumentDialog(QWidget *parent) :
     this->setWindowTitle("Add a New Instrument");
     connect(ui->addStringButton, SIGNAL (released()), this, SLOT (button_press_add_string()));
     connect(ui->okButton, SIGNAL (released()), this, SLOT (button_press_ok()));
+
+    inst = new InstrumentModel();
 }
 
 NewInstrumentDialog::~NewInstrumentDialog()
 {
+    delete inst;
     delete ui;
 }
 

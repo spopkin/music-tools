@@ -37,6 +37,15 @@ InstrumentModel::~InstrumentModel()
         //free instrumentString
     //delete stringSet
     //done
+
+    while(stringSet->size() > 0) {
+        instrumentString *inst = stringSet->back();
+        stringSet->pop_back();
+        free(inst->stringName);
+        free(inst);
+    }
+
+    delete stringSet;
 }
 
 //returns the number of strings in this instrument model
