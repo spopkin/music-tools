@@ -7,6 +7,7 @@
 
 #include "instrumentmodel.h"
 
+
 //the instrument model that this dialog creates
 InstrumentModel *inst;
 
@@ -40,6 +41,5 @@ void NewInstrumentDialog::button_press_add_string()
 //TODO: handles the acceptance and final creation of the current instrument
 void NewInstrumentDialog::button_press_ok()
 {
-
 
 }

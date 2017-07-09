@@ -138,7 +138,16 @@ int InstrumentModel::addString(char *stringName, float frequency)
 
 //moves a string to a different position.  Meant for use if the
 //user created the strings out of order.
-int reorderString(char *stringName, int newPosition)
+int InstrumentModel::reorderString(char *stringName, int newPosition)
 {
+    int currentStringNo = getStringNumber(stringName);
+    if (currentStringNo < 0 || currentStringNo >= stringSet->size()
+            || newPosition < 0 || newPosition >= stringSet-> size()) {
+        return -1;
+    }
+    instrumentString *instStr = stringSet->at(currentStringNo);
+    stringSet->erase(stringSet->begin() + currentStringNo);
+    stringSet->insert(stringSet->begin() + newPosition, instStr);
+
     return 0;
 }
