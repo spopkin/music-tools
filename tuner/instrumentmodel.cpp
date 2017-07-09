@@ -39,12 +39,8 @@ InstrumentModel::~InstrumentModel()
     //done
 
     while(stringSet->size() > 0) {
-        instrumentString *inst = stringSet->back();
-        stringSet->pop_back();
-        free(inst->stringName);
-        free(inst);
+        deleteStringByNumber(0);
     }
-
     delete stringSet;
 }
 
@@ -94,7 +90,7 @@ char *InstrumentModel::getStringNote(char *stringName)
 //deletes the first string found with the matching string name
 int InstrumentModel::deleteStringByName(char *stringName)
 {
-    return 0;
+    return deleteStringByNumber(getStringNumber(stringName));
 }
 
 //deletes the string in the given vector position
