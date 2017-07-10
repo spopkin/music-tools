@@ -4,6 +4,20 @@
 #include <vector>
 #include <cstdlib>
 #include <cstring>
+#include <tgmath.h>
+
+//Define constant baseline notes
+//used to compute a note for a given frequency
+#define a1 55.00
+#define b1 61.74
+#define c1 32.70
+#define d1 36.71
+#define e1 41.20
+#define f1 43.65
+#define g1 49.00
+//used to provide half-steps for sharp/flat notes at octave edges
+//#define b0 = 30.87;
+//#define c2 = 65.41;
 
 //Struct to model a single instrument string
 //Can probably also be used with non-string instruments, but this is
@@ -12,7 +26,7 @@ struct instrumentString
 {
     char *stringName;
     //char *note;   //this can probably just be computed on the fly
-    float frequency;
+    double frequency;
 };
 
 //Holds the set of string structs
@@ -72,7 +86,7 @@ int InstrumentModel::getStringNumber(char *stringName)
 }
 
 //returns the correct frequency in Hz of a given string
-float InstrumentModel::getStringFrequency(char *stringName)
+double InstrumentModel::getStringFrequency(char *stringName)
 {
     int stringNo = getStringNumber(stringName);
     if (stringNo == -1) {
@@ -82,9 +96,52 @@ float InstrumentModel::getStringFrequency(char *stringName)
 }
 
 //returns the note of a given string
-char *InstrumentModel::getStringNote(char *stringName)
+char InstrumentModel::getStringNote(char *stringName)
 {
-    return "";
+    //basically, just use mod math to find the one with
+    //the smallest remainder.
+    char note = 0;
+    double minDiff = 10000000000000;
+    double current = getStringFrequency(stringName);
+
+    double aNoteDiff = fmod(current, a1);
+    double bNoteDiff = fmod(current, b1);
+    double cNoteDiff = fmod(current, c1);
+    double dNoteDiff = fmod(current, d1);
+    double eNoteDiff = fmod(current, e1);
+    double fNoteDiff = fmod(current, f1);
+    double gNoteDiff = fmod(current, g1);
+
+    if (aNoteDiff < minDiff) {
+        minDiff = aNoteDiff;
+        note = 'a';
+    }
+    if (bNoteDiff < minDiff) {
+        minDiff = bNoteDiff;
+        note = 'b';
+    }
+    if (cNoteDiff < minDiff) {
+        minDiff = cNoteDiff;
+        note = 'c';
+    }
+    if (dNoteDiff < minDiff) {
+        minDiff = dNoteDiff;
+        note = 'd';
+    }
+    if (eNoteDiff < minDiff) {
+        minDiff = eNoteDiff;
+        note = 'e';
+    }
+    if (fNoteDiff < minDiff) {
+        minDiff = fNoteDiff;
+        note = 'f';
+    }
+    if (gNoteDiff < minDiff) {
+        minDiff = gNoteDiff;
+        note = 'g';
+    }
+
+    return note;
 }
 
 //deletes the first string found with the matching string name

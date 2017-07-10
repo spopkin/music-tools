@@ -14,8 +14,8 @@ public:
     char *getStringName(int stringNumber);
     int getStringNumber(char *stringName);
 
-    float getStringFrequency(char *stringName);
-    char *getStringNote(char *stringName);
+    double getStringFrequency(char *stringName);
+    char getStringNote(char *stringName);
 
     int deleteStringByName(char *stringName);
     int deleteStringByNumber(int stringNumber);
