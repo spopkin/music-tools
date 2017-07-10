@@ -8,7 +8,6 @@ public:
     InstrumentModel();
     ~InstrumentModel();
 
-    char *getInstrumentName();
     int getNumberOfStrings();
 
     char *getStringName(int stringNumber);
@@ -23,6 +22,15 @@ public:
     int addString(char *stringName, float frequency);
 
     int reorderString(char *stringName, int newPosition);
+
+    void setInstrumentName(char *newName);
+    char *getInstrumentName();
+
+private:
+    void deleteNameIfAlloc();
+
+    //The name of the current instrument
+    char *instrumentName;
 };
 
 #endif // INSTRUMENTMODEL_H

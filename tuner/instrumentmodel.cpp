@@ -32,13 +32,11 @@ struct instrumentString
 //Holds the set of string structs
 std::vector<instrumentString *> *stringSet;
 
-//The name of the current instrument
-char *instrumentName;
-
 
 InstrumentModel::InstrumentModel()
 {
     stringSet = new std::vector<instrumentString *>();
+    instrumentName = 0;
 }
 
 InstrumentModel::~InstrumentModel()
@@ -56,6 +54,8 @@ InstrumentModel::~InstrumentModel()
         deleteStringByNumber(0);
     }
     delete stringSet;
+
+    deleteNameIfAlloc();
 }
 
 //returns the number of strings in this instrument model
@@ -207,4 +207,28 @@ int InstrumentModel::reorderString(char *stringName, int newPosition)
     stringSet->insert(stringSet->begin() + newPosition, instStr);
 
     return 0;
+}
+
+void InstrumentModel::setInstrumentName(char *newName)
+{
+    deleteNameIfAlloc();
+    char *c = (char *) malloc(sizeof(char) * (1 + strlen(newName)));
+    strcpy(c, newName);
+    instrumentName = c;
+}
+
+char *InstrumentModel::getInstrumentName()
+{
+    return instrumentName;
+}
+
+//deletes the instrument name, freeing the memory, but only if it
+//hasn't already been freed and set to zero.
+void InstrumentModel::deleteNameIfAlloc()
+{
+    if (instrumentName != 0)
+    {
+        free(instrumentName);
+        instrumentName = 0;
+    }
 }
