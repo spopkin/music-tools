@@ -49,7 +49,12 @@ InstrumentModel *InstrumentList::getInstrumentByNumber(int instrumentNo)
 
 InstrumentModel *InstrumentList::getInstrumentByName(char *instrumentName)
 {
-
+    for (int i = 0; i < instSet->size(); i++) {
+        if (!strcmp(instSet->at(i)->getInstrumentName(), instrumentName)) {
+            return instSet->at(i);
+        }
+    }
+    return 0;
 }
 
 int InstrumentList::getNumInstruments()

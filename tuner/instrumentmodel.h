@@ -1,6 +1,7 @@
 #ifndef INSTRUMENTMODEL_H
 #define INSTRUMENTMODEL_H
 
+#include <vector>
 
 class InstrumentModel
 {
@@ -31,6 +32,19 @@ private:
 
     //The name of the current instrument
     char *instrumentName;
+
+    //Struct to model a single instrument string
+    //Can probably also be used with non-string instruments, but this is
+    //supposed to be a guitar tuner anyway.
+    struct instrumentString
+    {
+        char *stringName;
+        //char *note;   //this can probably just be computed on the fly
+        double frequency;
+    };
+
+    std::vector<instrumentString *> *stringSet;
+
 };
 
 #endif // INSTRUMENTMODEL_H

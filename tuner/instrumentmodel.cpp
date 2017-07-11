@@ -1,10 +1,10 @@
 //Models an instrument and its properties
 
 #include "instrumentmodel.h"
-#include <vector>
 #include <cstdlib>
 #include <cstring>
 #include <tgmath.h>
+#include <vector>
 
 //Define constant baseline notes
 //used to compute a note for a given frequency
@@ -19,19 +19,8 @@
 //#define b0 = 30.87;
 //#define c2 = 65.41;
 
-//Struct to model a single instrument string
-//Can probably also be used with non-string instruments, but this is
-//supposed to be a guitar tuner anyway.
-struct instrumentString
-{
-    char *stringName;
-    //char *note;   //this can probably just be computed on the fly
-    double frequency;
-};
-
 //Holds the set of string structs
-std::vector<instrumentString *> *stringSet;
-
+//std::vector<instrumentString *> *stringSet;
 
 InstrumentModel::InstrumentModel()
 {
