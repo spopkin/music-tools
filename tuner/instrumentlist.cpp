@@ -57,7 +57,20 @@ InstrumentModel *InstrumentList::getInstrumentByName(char *instrumentName)
     return 0;
 }
 
+//returns the number of instruments stored in the list
 int InstrumentList::getNumInstruments()
 {
     return instSet->size();
+}
+
+//creates a sendable, storable json string.
+char *InstrumentList::serializeToJSON()
+{
+    return 0;
+}
+
+//creates an InstrumentList from a json string
+InstrumentList *InstrumentList::deserializeFromJSON(char *json)
+{
+    return 0;
 }
