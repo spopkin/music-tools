@@ -2,6 +2,7 @@
 #define INSTRUMENTLIST_H
 
 #include "instrumentmodel.h"
+#include <vector>
 
 class InstrumentList
 {
@@ -10,10 +11,15 @@ public:
     ~InstrumentList();
 
     void addInstrument(InstrumentModel *instrument);
-    InstrumentModel *removeInstrumentByNumber(int instrumentNo);
-    InstrumentModel *removeInstrumentByName(char *instrumentName);
+    void removeInstrumentByNumber(int instrumentNo);
+    void removeInstrumentByName(char *instrumentName);
     InstrumentModel *getInstrumentByNumber(int instrumentNo);
     InstrumentModel *getInstrumentByName(char *instrumentName);
+
+    int getNumInstruments();
+
+private:
+    std::vector<InstrumentModel *> *instSet;
 };
 
 #endif // INSTRUMENTLIST_H
