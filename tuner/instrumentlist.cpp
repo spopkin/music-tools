@@ -1,6 +1,7 @@
 //Simple list of instrument models available to the tuner
 
 #include "instrumentlist.h"
+#include <cstring>
 
 InstrumentList::InstrumentList()
 {
@@ -28,9 +29,17 @@ void InstrumentList::removeInstrumentByNumber(int instrumentNo)
     instSet->erase(instSet->begin() + instrumentNo);
 }
 
+//removes all instruments with a matching name
 void InstrumentList::removeInstrumentByName(char *instrumentName)
 {
-
+    for (int i = 0; i < instSet->size(); i++) {
+        InstrumentModel *inst = instSet->at(i);
+        if (strlen(instSet->at(i)->getInstrumentName()) == strlen(instrumentName)
+                && !strcmp(instSet->at(i)->getInstrumentName(), instrumentName)) {
+            removeInstrumentByNumber(i);
+            i--;
+        }
+    }
 }
 
 InstrumentModel *InstrumentList::getInstrumentByNumber(int instrumentNo)
