@@ -66,6 +66,37 @@ int InstrumentList::getNumInstruments()
 //creates a sendable, storable json string.
 char *InstrumentList::serializeToJSON()
 {
+    //compute the length of the wrapper elements
+    //for each instrument
+        //compute the length of the instrument model string
+    //use those lengths to compute the total string length
+    //malloc that
+    //strcpy the opening metadata
+    //strcpy each instrument's data
+    //strcpy the closing metadata/curly braces
+
+    //format:
+    //{
+    //  "instList": [
+    //      {
+    //          "name": "$instName",
+    //          "strings": [
+    //              {
+    //                  "name": "$strName",
+    //                  "freq": $strFreq
+    //              },...
+    //          ]
+    //      },...
+    //  ]
+    //}
+
+    //size of everything up to the first square bracket
+    //plus the size of everything from the line of the last one.
+    long len = (long) sizeof(char) * (strlen("{\n\t\"instList\": [\n\t]\n}") + 1);
+
+    for (int i = 0; i < instSet->size(); i++) {
+
+    }
     return 0;
 }
 
