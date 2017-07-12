@@ -14,7 +14,7 @@ public:
     void addInstrument(InstrumentModel *instrument);
     void removeInstrumentByNumber(int instrumentNo);
 //    void removeInstrumentByName(char *instrumentName);
-    void removeInstrumentByName(std::string instrumentName);
+    int removeInstrumentByName(std::string instrumentName);
     InstrumentModel *getInstrumentByNumber(int instrumentNo);
     //    InstrumentModel *getInstrumentByName(char *instrumentName);
     InstrumentModel *getInstrumentByName(std::string instrumentName);

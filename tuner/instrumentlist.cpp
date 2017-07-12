@@ -29,12 +29,15 @@ void InstrumentList::removeInstrumentByNumber(int instrumentNo)
     instSet->erase(instSet->begin() + instrumentNo);
 }
 
-//removes all instruments with a matching name
-//void InstrumentList::removeInstrumentByName(char *instrumentName)
-void InstrumentList::removeInstrumentByName(std::string instrumentName)
+//removes the first instrument with a matching name
+int InstrumentList::removeInstrumentByName(std::string instrumentName)
 {
     int num = getInstrumentNum(instrumentName);
-    removeInstrumentByNumber(num);
+    if (num >= 0) {
+        removeInstrumentByNumber(num);
+        return 0;
+    }
+    return -1;
 }
 
 InstrumentModel *InstrumentList::getInstrumentByNumber(int instrumentNo)
@@ -42,6 +45,7 @@ InstrumentModel *InstrumentList::getInstrumentByNumber(int instrumentNo)
     return instSet->at(instrumentNo);
 }
 
+//retrieves an instrument's index in the vector
 int InstrumentList::getInstrumentNum(std::string instrumentName)
 {
     for (int i = 0; i < instSet->size(); i++) {
@@ -52,11 +56,14 @@ int InstrumentList::getInstrumentNum(std::string instrumentName)
     return -1;
 }
 
-//InstrumentModel *InstrumentList::getInstrumentByName(char *instrumentName)
+//get the instrument pointer for the first instrument with a matching name
 InstrumentModel *InstrumentList::getInstrumentByName(std::string instrumentName)
 {
     int num = getInstrumentNum(instrumentName);
-    return instSet->at(num);
+    if (num >= 0) {
+        return instSet->at(num);
+    }
+    return 0;
 }
 
 //returns the number of instruments stored in the list
