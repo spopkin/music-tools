@@ -198,15 +198,13 @@ int InstrumentModel::reorderString(char *stringName, int newPosition)
     return 0;
 }
 
-void InstrumentModel::setInstrumentName(char *newName)
+void InstrumentModel::setInstrumentName(std::string newName)
 {
     deleteNameIfAlloc();
-    char *c = (char *) malloc(sizeof(char) * (1 + strlen(newName)));
-    strcpy(c, newName);
-    instrumentName = c;
+    instrumentName = new std::string(newName);
 }
 
-char *InstrumentModel::getInstrumentName()
+std::string *InstrumentModel::getInstrumentName()
 {
     return instrumentName;
 }
@@ -217,7 +215,7 @@ void InstrumentModel::deleteNameIfAlloc()
 {
     if (instrumentName != 0)
     {
-        free(instrumentName);
+        delete instrumentName;
         instrumentName = 0;
     }
 }

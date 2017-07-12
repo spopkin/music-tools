@@ -2,6 +2,7 @@
 #define INSTRUMENTMODEL_H
 
 #include <vector>
+#include <string>
 
 class InstrumentModel
 {
@@ -24,14 +25,17 @@ public:
 
     int reorderString(char *stringName, int newPosition);
 
-    void setInstrumentName(char *newName);
-    char *getInstrumentName();
+//    void setInstrumentName(char *newName);
+//    char *getInstrumentName();
+    void setInstrumentName(std::string newName);
+    std::string *getInstrumentName();
 
 private:
     void deleteNameIfAlloc();
 
     //The name of the current instrument
-    char *instrumentName;
+//    char *instrumentName;
+    std::string *instrumentName;
 
     //Struct to model a single instrument string
     //Can probably also be used with non-string instruments, but this is

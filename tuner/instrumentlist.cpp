@@ -30,16 +30,11 @@ void InstrumentList::removeInstrumentByNumber(int instrumentNo)
 }
 
 //removes all instruments with a matching name
-void InstrumentList::removeInstrumentByName(char *instrumentName)
+//void InstrumentList::removeInstrumentByName(char *instrumentName)
+void InstrumentList::removeInstrumentByName(std::string instrumentName)
 {
-    for (int i = 0; i < instSet->size(); i++) {
-        InstrumentModel *inst = instSet->at(i);
-        if (strlen(instSet->at(i)->getInstrumentName()) == strlen(instrumentName)
-                && !strcmp(instSet->at(i)->getInstrumentName(), instrumentName)) {
-            removeInstrumentByNumber(i);
-            i--;
-        }
-    }
+    int num = getInstrumentNum(instrumentName);
+    removeInstrumentByNumber(num);
 }
 
 InstrumentModel *InstrumentList::getInstrumentByNumber(int instrumentNo)
@@ -47,14 +42,21 @@ InstrumentModel *InstrumentList::getInstrumentByNumber(int instrumentNo)
     return instSet->at(instrumentNo);
 }
 
-InstrumentModel *InstrumentList::getInstrumentByName(char *instrumentName)
+int InstrumentList::getInstrumentNum(std::string instrumentName)
 {
     for (int i = 0; i < instSet->size(); i++) {
-        if (!strcmp(instSet->at(i)->getInstrumentName(), instrumentName)) {
-            return instSet->at(i);
+        if (!instSet->at(i)->getInstrumentName()->compare(instrumentName)) {
+            return i;
         }
     }
-    return 0;
+    return -1;
+}
+
+//InstrumentModel *InstrumentList::getInstrumentByName(char *instrumentName)
+InstrumentModel *InstrumentList::getInstrumentByName(std::string instrumentName)
+{
+    int num = getInstrumentNum(instrumentName);
+    return instSet->at(num);
 }
 
 //returns the number of instruments stored in the list

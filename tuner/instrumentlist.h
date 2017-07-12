@@ -3,6 +3,7 @@
 
 #include "instrumentmodel.h"
 #include <vector>
+#include <string>
 
 class InstrumentList
 {
@@ -12,9 +13,11 @@ public:
 
     void addInstrument(InstrumentModel *instrument);
     void removeInstrumentByNumber(int instrumentNo);
-    void removeInstrumentByName(char *instrumentName);
+//    void removeInstrumentByName(char *instrumentName);
+    void removeInstrumentByName(std::string instrumentName);
     InstrumentModel *getInstrumentByNumber(int instrumentNo);
-    InstrumentModel *getInstrumentByName(char *instrumentName);
+    //    InstrumentModel *getInstrumentByName(char *instrumentName);
+    InstrumentModel *getInstrumentByName(std::string instrumentName);
 
     int getNumInstruments();
 
@@ -23,6 +26,8 @@ public:
 
 private:
     std::vector<InstrumentModel *> *instSet;
+
+    int getInstrumentNum(std::string instrumentName);
 };
 
 #endif // INSTRUMENTLIST_H
