@@ -54,7 +54,7 @@ int InstrumentModel::getNumberOfStrings()
 }
 
 //returns the name of a given string
-char *InstrumentModel::getStringName(int stringNumber)
+std::string *InstrumentModel::getStringName(int stringNumber)
 {
     if (stringNumber >= stringSet->size() || stringNumber < 0) {
         return 0;
@@ -63,11 +63,10 @@ char *InstrumentModel::getStringName(int stringNumber)
 }
 
 //returns the zero-indexed numeric position of a given string
-int InstrumentModel::getStringNumber(char *stringName)
+int InstrumentModel::getStringNumber(std::string stringName)
 {
     for (int i = 0; i < stringSet->size(); i++) {
-        char *c = stringSet->at(i)->stringName;
-        if (strlen(c) == strlen(stringName) && !strncmp(stringName, c, strlen(c))) {
+        if (!stringSet->at(i)->stringName->compare(stringName)) {
             return i;
         }
     }
@@ -75,17 +74,16 @@ int InstrumentModel::getStringNumber(char *stringName)
 }
 
 //returns the correct frequency in Hz of a given string
-double InstrumentModel::getStringFrequency(char *stringName)
+double InstrumentModel::getStringFrequency(std::string stringName)
 {
-    int stringNo = getStringNumber(stringName);
-    if (stringNo == -1) {
-        return -1.0;
+    int pos = getStringNumber(stringName);
+    if (pos > 0) {
+        return stringSet->at(pos)->frequency;
     }
-    return stringSet->at(stringNo)->frequency;
 }
 
 //returns the note of a given string
-char InstrumentModel::getStringNote(char *stringName)
+char InstrumentModel::getStringNote(std::string stringName)
 {
     //basically, just use mod math to find the one with
     //the smallest remainder.
@@ -134,7 +132,7 @@ char InstrumentModel::getStringNote(char *stringName)
 }
 
 //deletes the first string found with the matching string name
-int InstrumentModel::deleteStringByName(char *stringName)
+int InstrumentModel::deleteStringByName(std::string stringName)
 {
     return deleteStringByNumber(getStringNumber(stringName));
 }
@@ -153,7 +151,7 @@ int InstrumentModel::deleteStringByNumber(int stringNumber)
 }
 
 //adds a new string
-int InstrumentModel::addString(char *stringName, float frequency)
+int InstrumentModel::addString(std::string stringName, double frequency)
 {
     //first, check if the name is not taken
     //int number = getStringNumber(stringName);
@@ -167,14 +165,8 @@ int InstrumentModel::addString(char *stringName, float frequency)
     //create the string
     instrumentString *newString = (instrumentString *) malloc(sizeof(instrumentString));
 
-    //duplicate the string name to the heap so it won't go out of scope
-    int len = strlen(stringName) + 1;
-    char *duplicate = (char *) malloc(len * sizeof(char));
-    strcpy(duplicate, stringName);
-
-    //assign the name and frequency to the new string
+    newString->stringName = new std::string(stringName);
     newString->frequency = frequency;
-    newString->stringName = duplicate;
 
     //add the string to the set
     stringSet->push_back(newString);
@@ -184,18 +176,18 @@ int InstrumentModel::addString(char *stringName, float frequency)
 
 //moves a string to a different position.  Meant for use if the
 //user created the strings out of order.
-int InstrumentModel::reorderString(char *stringName, int newPosition)
+int InstrumentModel::reorderString(std::string stringName, int newPosition)
 {
     int currentStringNo = getStringNumber(stringName);
-    if (currentStringNo < 0 || currentStringNo >= stringSet->size()
-            || newPosition < 0 || newPosition >= stringSet-> size()) {
-        return -1;
-    }
-    instrumentString *instStr = stringSet->at(currentStringNo);
-    stringSet->erase(stringSet->begin() + currentStringNo);
-    stringSet->insert(stringSet->begin() + newPosition, instStr);
 
-    return 0;
+    if (currentStringNo >= 0) {
+        instrumentString *instStr = stringSet->at(currentStringNo);
+        stringSet->erase(stringSet->begin() + currentStringNo);
+        stringSet->insert(stringSet->begin() + newPosition, instStr);
+
+        return 0;
+    }
+    return -1;
 }
 
 void InstrumentModel::setInstrumentName(std::string newName)

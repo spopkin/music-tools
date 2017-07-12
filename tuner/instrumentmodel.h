@@ -12,21 +12,20 @@ public:
 
     int getNumberOfStrings();
 
-    char *getStringName(int stringNumber);
-    int getStringNumber(char *stringName);
+    std::string *getStringName(int stringNumber);
+    int getStringNumber(std::string stringName);
 
-    double getStringFrequency(char *stringName);
-    char getStringNote(char *stringName);
+    double getStringFrequency(std::string stringName);
+    char getStringNote(std::string stringName);
 
-    int deleteStringByName(char *stringName);
+    int deleteStringByName(std::string stringName);
     int deleteStringByNumber(int stringNumber);
 
-    int addString(char *stringName, float frequency);
+//    int addString(char *stringName, float frequency);
+    int addString(std::string stringName, double frequency);
 
-    int reorderString(char *stringName, int newPosition);
+    int reorderString(std::string stringName, int newPosition);
 
-//    void setInstrumentName(char *newName);
-//    char *getInstrumentName();
     void setInstrumentName(std::string newName);
     std::string *getInstrumentName();
 
@@ -34,7 +33,6 @@ private:
     void deleteNameIfAlloc();
 
     //The name of the current instrument
-//    char *instrumentName;
     std::string *instrumentName;
 
     //Struct to model a single instrument string
@@ -42,8 +40,8 @@ private:
     //supposed to be a guitar tuner anyway.
     struct instrumentString
     {
-        char *stringName;
-        //char *note;   //this can probably just be computed on the fly
+        std::string *stringName;
+//        char *stringName;
         double frequency;
     };
 
