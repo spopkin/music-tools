@@ -2,7 +2,6 @@
 
 #include "instrumentlist.h"
 #include <cstring>
-#include <iostream>
 
 InstrumentList::InstrumentList()
 {
@@ -84,8 +83,8 @@ std::string *InstrumentList::serializeToJSON()
     //          "instName": "$instName",
     //          "strings": [
     //              {
-    //                  "name": "$strName",
-    //                  "freq": $strFreq
+    //                  "stringName": "$strName",
+    //                  "stringFreq": $strFreq
     //              },...
     //          ]
     //      },...
@@ -99,10 +98,51 @@ std::string *InstrumentList::serializeToJSON()
 
     for (int i = 0; i < instSet->size(); i++) {
         std::string *name = instSet->at(i)->getInstrumentName();
+
+        //open instrument dictionary
         direct += "\t\t{\n";
+
+        //set instrument name
         direct += "\t\t\t\"instName\": \"" + *name + "\",\n";
-        direct += "\t\t\t\"strings\": []\n";
-        direct += "\t\t}\n";
+
+        //open strings array
+        direct += "\t\t\t\"strings\": [\n";
+
+        //foreach string, get string json
+        for (int j = 0; j < instSet->at(i)->getNumberOfStrings(); j++) {
+            direct += "\t\t\t\t{\n";
+            std::string stringName = *(instSet->at(i)->getStringName(j));
+            double stringFreq = instSet->at(i)->getStringFrequency(stringName);
+            /*std::stringstream *strs = new std::stringstream();
+            *strs << stringFreq;
+            std::string freqString = strs->str();
+            delete strs;*/
+            std::string freqString = "" + std::to_string(stringFreq);
+            direct += "\t\t\t\t\t\"stringName\": \"" + stringName + "\",\n";
+            direct += "\t\t\t\t\t\"stringFreq\": " + freqString + "\n";
+            direct += "\t\t\t\t}";
+
+            //fencepost the current string dictionary
+            if (j < instSet->at(i)->getNumberOfStrings() - 1) {
+                direct += ",";
+            }
+            direct += "\n";
+        }
+
+        //close strings array
+        direct += "\t\t\t]\n";
+
+        //close current instrument dictionary
+        direct += "\t\t}";
+
+        //if this isn't the last instrument, append a comma
+        if (i < instSet->size() - 1) {
+            direct += ",";
+        }
+
+        //end the current instrument dictionary line, whether it
+        //is or isn't the last one
+        direct += "\n";
     }
 
     direct += "\t]\n";
@@ -119,7 +159,7 @@ InstrumentList *InstrumentList::deserializeFromJSON(std::string *json)
     return 0;
 }
 
-void InstrumentList::okImDoneWithTheJSONNow(std::__cxx11::string *oldJSON)
+void InstrumentList::okImDoneWithTheJSONNow(std::string *oldJSON)
 {
     delete oldJSON;
 }

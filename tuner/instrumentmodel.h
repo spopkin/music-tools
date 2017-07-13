@@ -21,7 +21,6 @@ public:
     int deleteStringByName(std::string stringName);
     int deleteStringByNumber(int stringNumber);
 
-//    int addString(char *stringName, float frequency);
     int addString(std::string stringName, double frequency);
 
     int reorderString(std::string stringName, int newPosition);

@@ -8,6 +8,7 @@
 #include "instrumentmodel.h"
 #include "instrumentlist.h"
 
+
 //the instrument model that this dialog creates
 InstrumentModel *inst;
 InstrumentList *list;

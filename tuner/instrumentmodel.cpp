@@ -77,7 +77,7 @@ int InstrumentModel::getStringNumber(std::string stringName)
 double InstrumentModel::getStringFrequency(std::string stringName)
 {
     int pos = getStringNumber(stringName);
-    if (pos > 0) {
+    if (pos >= 0) {
         return stringSet->at(pos)->frequency;
     }
 }
