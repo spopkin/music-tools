@@ -2,6 +2,7 @@
 
 #include "instrumentlist.h"
 #include <cstring>
+#include <iostream>
 
 InstrumentList::InstrumentList()
 {
@@ -73,22 +74,14 @@ int InstrumentList::getNumInstruments()
 }
 
 //creates a sendable, storable json string.
-char *InstrumentList::serializeToJSON()
+std::string *InstrumentList::serializeToJSON()
 {
-    //compute the length of the wrapper elements
-    //for each instrument
-        //compute the length of the instrument model string
-    //use those lengths to compute the total string length
-    //malloc that
-    //strcpy the opening metadata
-    //strcpy each instrument's data
-    //strcpy the closing metadata/curly braces
-
+    //basically, just keep using string concatination
     //format:
     //{
     //  "instList": [
     //      {
-    //          "name": "$instName",
+    //          "instName": "$instName",
     //          "strings": [
     //              {
     //                  "name": "$strName",
@@ -99,18 +92,34 @@ char *InstrumentList::serializeToJSON()
     //  ]
     //}
 
-    //size of everything up to the first square bracket
-    //plus the size of everything from the line of the last one.
-    long len = (long) sizeof(char) * (strlen("{\n\t\"instList\": [\n\t]\n}") + 1);
+    std::string direct = "";
+
+    direct += "{\n";
+    direct += "\t\"instList\": [\n";
 
     for (int i = 0; i < instSet->size(); i++) {
-
+        std::string *name = instSet->at(i)->getInstrumentName();
+        direct += "\t\t{\n";
+        direct += "\t\t\t\"instName\": \"" + *name + "\",\n";
+        direct += "\t\t\t\"strings\": []\n";
+        direct += "\t\t}\n";
     }
-    return 0;
+
+    direct += "\t]\n";
+    direct += "}";
+
+    std::string *jsonRep = new std::string(direct);
+
+    return jsonRep;
 }
 
 //creates an InstrumentList from a json string
-InstrumentList *InstrumentList::deserializeFromJSON(char *json)
+InstrumentList *InstrumentList::deserializeFromJSON(std::string *json)
 {
     return 0;
+}
+
+void InstrumentList::okImDoneWithTheJSONNow(std::__cxx11::string *oldJSON)
+{
+    delete oldJSON;
 }
