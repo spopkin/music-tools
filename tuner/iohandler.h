@@ -2,14 +2,15 @@
 #define IOHANDLER_H
 
 #include "instrumentlist.h"
+#include <string>
 
 class IOHandler
 {
 public:
     IOHandler();
     ~IOHandler();
-    InstrumentList *readInstrumentsListFromDisk(char *filename);
-    int writeInstrumentsListToDisk(InstrumentList *instruments, char *filename);
+    InstrumentList *readInstrumentsListFromDisk(std::string filename);
+    int writeInstrumentsListToDisk(InstrumentList *instruments, std::string sfilename);
 
 };
 

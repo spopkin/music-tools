@@ -1,0 +1,26 @@
+{
+	"instList": [
+		{
+			"instName": "asdf",
+			"strings": [
+				{
+					"stringName": "qwer",
+					"stringFreq": 1234.400000
+				},
+				{
+					"stringName": "pwah",
+					"stringFreq": 6789.000000
+				}
+			]
+		},
+		{
+			"instName": "zxcv",
+			"strings": [
+				{
+					"stringName": "1234",
+					"stringFreq": 7890.000000
+				}
+			]
+		}
+	]
+}

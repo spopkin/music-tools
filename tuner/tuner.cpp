@@ -8,6 +8,9 @@
 
 #include "aboutdialog.h"
 #include "newinstrumentdialog.h"
+#include "iohandler.h"
+
+IOHandler *io = 0;
 
 Tuner::Tuner(QWidget *parent) :
     QMainWindow(parent),
@@ -19,6 +22,13 @@ Tuner::Tuner(QWidget *parent) :
     actionEditInstruments = ui->actionEdit_Instruments;
     actionNewInstrument = ui->actionNew_Instrument;
 
+    if (io == 0) {
+        io = new IOHandler();
+        //go ahead and load the default profile now
+        //STUB: the file path is not yet configurable
+        io->readInstrumentsListFromDisk("/home/sjp/Documents/music-tools/tuner/testfiles/test0.json");
+    }
+
     connect(actionAbout, SIGNAL (triggered()), this, SLOT (on_menu_about_activated()));
     connect(actionEditInstruments, SIGNAL (triggered()), this, SLOT (on_menu_edit_instruments()));
     connect(actionNewInstrument, SIGNAL (triggered()), this, SLOT (on_menu_new_instrument()));
@@ -27,6 +37,10 @@ Tuner::Tuner(QWidget *parent) :
 Tuner::~Tuner()
 {
     delete ui;
+    if (io != 0) {
+        delete io;
+        io = 0;
+    }
 }
 
 //Handles the main_menu->help->about event
