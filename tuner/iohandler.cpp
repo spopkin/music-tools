@@ -30,9 +30,12 @@ InstrumentList *IOHandler::readInstrumentsListFromDisk(std::string filename)
 
     BOOST_FOREACH(boost::property_tree::ptree::value_type &v, jsonTree.get_child("instList"))
     {
-        BOOST_FOREACH(boost::property_tree::ptree::value_type &w, v.second)
+        std::cout << "instrument name: " << v.second.get<std::string>("instName") << std::endl;
+
+        BOOST_FOREACH(boost::property_tree::ptree::value_type &w, v.second.get_child("strings"))
         {
-            std::cout << "\t" << w.first << std::endl;
+            std::cout << "\t" << w.second.get<std::string>("stringName") << ": ";
+            std::cout << w.second.get<std::string>("stringFreq") << std::endl;
         }
     }
 
