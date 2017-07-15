@@ -4,6 +4,8 @@
 #include "iohandler.h"
 #include <fstream>
 #include <iostream>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/foreach.hpp>
 
 //anticipated disk sector size in bytes
 //modern drives tend to have 4KB sectors.
@@ -24,7 +26,7 @@ InstrumentList *IOHandler::readInstrumentsListFromDisk(std::string filename)
 {
     std::fstream readFile;
     readFile.open(filename);
-
+/*
     std::string jsonData = "";
     do {
         char *inBuffer = (char *) calloc(sizeof(char), (SECTOR_SIZE + 1));
@@ -36,9 +38,23 @@ InstrumentList *IOHandler::readInstrumentsListFromDisk(std::string filename)
     } while(readFile.gcount() > 0);
 
     readFile.sync();
+*/
+
+    //use boost to read the json
+    boost::property_tree::ptree jsonTree;
+    boost::property_tree::read_json(readFile, jsonTree);
+
+    std::cout << jsonTree.size() << std::endl;
+
+    BOOST_FOREACH(boost::property_tree::ptree::value_type &v, jsonTree)
+    {
+        std::cout << v.first << std::endl;
+    }
+
+//    std::cout << jsonTree.get<std::string>(0);
 
     //STUB: dump to console
-    std::cout << jsonData << std::endl;
+//    std::cout << jsonData << std::endl;
 
     //do reads and processing here
 
