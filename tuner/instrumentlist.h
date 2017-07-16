@@ -19,10 +19,6 @@ public:
 
     int getNumInstruments();
 
-    std::string *serializeToJSON();
-    InstrumentList *deserializeFromJSON(std::string *json);
-    void okImDoneWithTheJSONNow(std::string *oldJSON);
-
 private:
     std::vector<InstrumentModel *> *instSet;
 

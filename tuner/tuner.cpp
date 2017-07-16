@@ -26,7 +26,9 @@ Tuner::Tuner(QWidget *parent) :
         io = new IOHandler();
         //go ahead and load the default profile now
         //STUB: the file path is not yet configurable
-        io->readInstrumentsListFromDisk("/home/sjp/Documents/music-tools/tuner/testfiles/test0.json");
+        InstrumentList *iList = io->readInstrumentsListFromDisk("/home/sjp/Documents/music-tools/tuner/testfiles/test0.json");
+        //STUB: more printing
+        std::cout << *(io->serializeToJSON(iList)) << std::endl;
     }
 
     connect(actionAbout, SIGNAL (triggered()), this, SLOT (on_menu_about_activated()));
