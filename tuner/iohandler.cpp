@@ -21,7 +21,7 @@ IOHandler::~IOHandler()
 //Reads, decodes, and returns a list from a given file by name
 InstrumentList *IOHandler::readInstrumentsListFromDisk(std::string filename)
 {
-    std::fstream readFile;
+    std::ifstream readFile;
     readFile.open(filename);
 
     //use boost to read the json
@@ -36,12 +36,13 @@ InstrumentList *IOHandler::readInstrumentsListFromDisk(std::string filename)
 //Encodes and writes a list to a given file by name
 int IOHandler::writeInstrumentsListToDisk(InstrumentList *instruments, std::string filename)
 {
-    std::fstream writeFile;
+    std::ofstream writeFile;
     writeFile.open(filename);
 
-    //do writes and processing here
-
+    writeFile << serializeToJSON(instruments)->data() << std::endl;
+    writeFile.flush();
     writeFile.close();
+
 
     return 0;
 }

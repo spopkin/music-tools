@@ -28,7 +28,8 @@ Tuner::Tuner(QWidget *parent) :
         //STUB: the file path is not yet configurable
         InstrumentList *iList = io->readInstrumentsListFromDisk("/home/sjp/Documents/music-tools/tuner/testfiles/test0.json");
         //STUB: more printing
-        std::cout << *(io->serializeToJSON(iList)) << std::endl;
+//        std::cout << *(io->serializeToJSON(iList)) << std::endl;
+        io->writeInstrumentsListToDisk(iList, "/tmp/tuner-test0.txt");
     }
 
     connect(actionAbout, SIGNAL (triggered()), this, SLOT (on_menu_about_activated()));
