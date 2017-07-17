@@ -21,15 +21,28 @@ IOHandler::~IOHandler()
 //Reads, decodes, and returns a list from a given file by name
 InstrumentList *IOHandler::readInstrumentsListFromDisk(std::string filename)
 {
-    std::ifstream readFile;
-    readFile.open(filename);
+    //handle non-existence
+    if (!std::fstream(filename)) {
+        std::cerr << "file not found: " << filename << std::endl;
+        return 0;
+    }
+    try {
 
-    //use boost to read the json
-    boost::property_tree::ptree jsonTree;
-    boost::property_tree::read_json(readFile, jsonTree);
-    readFile.close();
+        std::ifstream readFile;
 
-    return deserializeFromJSON(&jsonTree);
+        readFile.open(filename);
+
+        //use boost to read the json
+        boost::property_tree::ptree jsonTree;
+        boost::property_tree::read_json(readFile, jsonTree);
+        readFile.close();
+
+        return deserializeFromJSON(&jsonTree);
+    } catch (boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>) {
+        std::cerr << "file misformatted: " << filename << std::endl;
+        return 0;
+    }
+
 //    return 0;
 }
 

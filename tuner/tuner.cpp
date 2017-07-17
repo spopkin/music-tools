@@ -10,6 +10,9 @@
 #include "newinstrumentdialog.h"
 #include "iohandler.h"
 
+#define DEFAULT_HOME_CONFIG "~/.config/music_tools/tuner_cfg.json"
+#define DEFAULT_SYSTEM_CONFIG "/etc/music_tools/tuner_cfg.json"
+
 IOHandler *io = 0;
 
 Tuner::Tuner(QWidget *parent) :
@@ -27,6 +30,8 @@ Tuner::Tuner(QWidget *parent) :
         //go ahead and load the default profile now
         //STUB: the file path is not yet configurable
         InstrumentList *iList = io->readInstrumentsListFromDisk("/home/sjp/Documents/music-tools/tuner/testfiles/test0.json");
+        io->readInstrumentsListFromDisk("/tmp/this-file-should-never-exist.txt");
+        InstrumentList *garbage = io->readInstrumentsListFromDisk("/home/sjp/Documents/music-tools/tuner/testfiles/test1_misformatted.json");
         //STUB: more printing
 //        std::cout << *(io->serializeToJSON(iList)) << std::endl;
         io->writeInstrumentsListToDisk(iList, "/tmp/tuner-test0.txt");
